@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    index
+{% endblock %}
+
+{% block main %}
+    <h1>Index</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>symbol</th>
+                <th>shares</th>
+                <th>price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for index in database %}
+                <tr>
+                    <td>{{ index["symbol"] }}</td>
+                    <td>{{ index["number"] }}</td>
+                    <td>{{ index["price"] | usd }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+             <td></td>
+             <td></td>
+             <th>cash</th>
+             <th>{{ cash }}</th>
+            <tr>
+        </tfoot>
+    </table>
+{% endblock %}
